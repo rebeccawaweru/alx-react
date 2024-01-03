@@ -15,3 +15,13 @@ A README.md file at the root of the folder of the project is mandatory
 
 In order to download image from url in ubuntu terminal:
 wget [image_url_here] -O desired_filename.extension
+
+cp -rp file_to_duplicate/* destination file
+
+Webpack is a static module bundler. It treates all assets and files as modules
+Main concepts of webpack:
+1. Entry
+2. Output
+3. Loaders
+4. Plugins
+5. Mode
