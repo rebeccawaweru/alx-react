@@ -25,3 +25,6 @@ Main concepts of webpack:
 3. Loaders
 4. Plugins
 5. Mode
+
+Cleaning cache:
+npm cache clean
