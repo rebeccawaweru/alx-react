@@ -8,8 +8,10 @@ import {shallow } from "enzyme";
 describe('<App/>', () => {
     //ensure it renders without crashing
     it('renders without crashing', () => {
-        shallow(<App/>)
+        const component = shallow(<App/>)
+        expect(component).toBeDefined();
     });
+    
     // it('renders div with class .App-header', () => {
     //     const wrapper = shallow(<App/>)
     //     expect(wrapper.find('.App-header')).toHaveLength(1)
