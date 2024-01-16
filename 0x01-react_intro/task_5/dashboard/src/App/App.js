@@ -1,6 +1,6 @@
-import logo from './holberton-logo.jpg';
+import logo from '../assets/holberton-logo.jpg';
 import './App.css';
-import { getFullYear, getFooterCopy } from './utils'
+import { getFullYear, getFooterCopy } from '../utils/utils'
 import {useRef} from 'react'
 function App() {
   const emailRef = useRef(null)
