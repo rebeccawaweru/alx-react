@@ -1,10 +1,7 @@
 import React from "react";
 import CourseListRow from "./CourseListRow";
 import {shallow} from 'enzyme';
-import { configure } from 'enzyme';
-import Adapter from '@cfaester/enzyme-adapter-react-18';
 
-configure({ adapter: new Adapter() });
 describe("Course List Row Component test", () => {
     it("should render without crashing", () => {
         const wrapper = shallow(<CourseListRow textFirstCell="test"/>)

@@ -3,11 +3,9 @@
  */
 import React from 'react'
 import {render} from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
 import App from '../App/App';
-import { Footer } from '../Footer/Footer';
 import { getFooterCopy, getLatestNotification } from './utils';
-import { shallow } from 'enzyme';
+
 describe('<App/>', ()=>{
     it('renders the correct year', () => {
         render(<App/>)
