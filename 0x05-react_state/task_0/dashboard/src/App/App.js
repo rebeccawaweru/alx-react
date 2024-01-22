@@ -6,6 +6,10 @@ import { Footer } from '../Footer/Footer';
 import Header from '../Header/Header';
 import { getLatestNotification } from '../utils/utils';
 import PropTypes from "prop-types"
+import { StyleSheet, css } from 'aphrodite';
+import CourseList from '../CourseList/CourseList'
+import BodySection from '../BodySection/BodySection';
+import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -59,19 +63,41 @@ class App extends React.Component {
   }
   render () {
     return (
-      <>
+      <React.Fragment>
+      <div className={css(styles.App)}>
+      <div className='heading-section'>
       <Notifications listNotifications={this.listNotifications} displayDrawer={this.state.displayDrawer} handleDisplayDrawer={this.handleDisplayDrawer} handleHideDrawer={this.handleHideDrawer}/>
-      <div className='App'>
        <Header/>
-
-       <Login/>
+       </div>
+       {this.props.isLoggedIn ? (
+        <BodySectionWithMarginBottom title="Course list">
+          <CourseList listCourses={this.listCourses}/>
+        </BodySectionWithMarginBottom>
+       ) : (
+        <BodySectionWithMarginBottom title="Log in to continue">
+          <Login/>
+        </BodySectionWithMarginBottom>
+       )}
+       <BodySection title="News from the school">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+       </BodySection>
        <Footer/>
       </div>
-      </>
+      </React.Fragment>
     )
   }
 }
 
+const styles = StyleSheet.create({
+  App: {
+    height:"100vh",
+    maxWidth:"100vw",
+    position:"relative",
+    fontFamily:"Arial, Helvetica, sans-serif",
+  },
+})
 App.defaultProps = {
   isLoggedIn: false,
   logOut: () =>{
