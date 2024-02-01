@@ -1,0 +1,8 @@
+.App-body {
+    height: 50vh;
+    padding-left: 32px;
+    border-bottom: 2px solid #d6204e;
+}
+.App-body > div label, input{
+     margin-right: 10px;
+}
