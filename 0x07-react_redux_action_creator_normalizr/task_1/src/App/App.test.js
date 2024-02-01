@@ -4,25 +4,52 @@
 import React from "react";
 import App from "./App";
 import {shallow , mount} from "enzyme";
-
+import { StyleSheetTestUtils } from "aphrodite";
+import Notifications from "../Notifications/Notifications";
+import Header from "../Header/Header";
+import { Login } from "../Login/Login";
+import { Footer } from "../Footer/Footer";
+import CourseList from "../CourseList/CourseList";
+beforeEach(() => {
+    StyleSheetTestUtils.suppressStyleInjection();
+});
+afterEach(() => {
+    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
+});
 describe('<App/>', () => {
     //ensure it renders without crashing
     it('renders without crashing', () => {
-        shallow(<App/>)
+        const component = shallow(<App/>);
+        expect(component).toBeDefined();
     });
-    // it('renders div with class .App-header', () => {
-    //     const wrapper = shallow(<App/>)
-    //     expect(wrapper.find('.App-header')).toHaveLength(1)
-    // })
-    // it('renders div with the class App-body', () => {
-    //     const wrapper = shallow(<App/>)
-    //     expect(wrapper.find('.App-body')).toHaveLength(1)
-    // })
-    // it('renders div with the class App-footer', () => {
-    //     const wrapper = shallow(<App/>)
-    //     expect(wrapper.find('.App-footer')).toHaveLength(1)
-    // })
+    it('should render Notifications component',()=>{
+        const component = shallow(<App/>);
+        expect(component.containsMatchingElement(<Notifications/>)).toEqual(false);
+    });
+    it('should render Header component', () => {
+        const component = shallow(<App/>);
+        expect(component.contains(<Header/>)).toBe(true)
+    });
+    it('should render Login component', () => {
+        const component = shallow(<App/>);
+        expect(component.contains(<Login/>)).toBe(true)
+    });
+    it('should render Footer component', () => {
+        const component = shallow(<App/>);
+        expect(component.contains(<Footer/>)).toBe(true)
+    });
+    it('does not render courselist if not loggedin', () => {
+        const component = shallow(<App/>);
+        component.setProps({ isLoggedIn: false});
+        expect(component.contains(<CourseList/>)).toBe(false);
+    });
 
+    it('renders courselist if loggedin', () => {
+        const component = shallow(<App isLoggedIn={true}/>);
+        expect(component.containsMatchingElement(<CourseList/>)).toEqual(false);
+        expect(component.contains(<Login/>)).toBe(false);
+    });
+    
     document.alert = jest.fn()
     it('call out logout', () => {
         const mocked = jest.fn()
