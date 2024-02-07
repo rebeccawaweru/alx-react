@@ -1,0 +1,14 @@
+.Notifications{
+    border-color: #d6204e;
+    border-style: dotted;
+    padding: 4px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+li[data-priority="default"] {
+    color: blue;
+}
+li[data-priority="urgent"] {
+    color: #d6204e;
+}
